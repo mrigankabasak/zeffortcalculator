@@ -139,13 +139,13 @@
 									</OverflowToolbar>
 								</headerToolbar>
 								<columns>
-									<Column >
+									<Column>
 										<Label design="Bold" text="Effort Calculator"  />
 									</Column>
-									<Column>
-										<Label design="Bold" text="Total Effort (In Hours)"/>
+									<Column hAlign="Center">
+										<Label design="Bold" text="Total Effort (In Hours)" />
 									</Column>
-									<Column>
+									<Column hAlign="Center">
 										<Label design="Bold" text="Total Effort (In Days)" />
 									</Column>
 								</columns>
@@ -154,7 +154,7 @@
 										<cells>
 											<Text text="{oModelEstCal>EffType}" />
 											<Text text="{path: 'oModelEstCal>TotEffortInHours', formatter: '.formatter.convertTwoDecimal' }" />											
-											<Text text="{path:'oModelEstCal>TotEffortInDays', type: 'sap.ui.model.type.Integer'	}" />
+											<Text text="{path:'oModelEstCal>TotEffortInDays', type: 'sap.ui.model.type.Integer'	}" textAlign="Right" />
 										</cells>
 									</ColumnListItem>
 								</items>
