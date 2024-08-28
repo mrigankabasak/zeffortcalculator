@@ -52,55 +52,31 @@
                 <Property Name="FioriSecCatRole" Type="Edm.String" MaxLength="8" sap:display-format="NonNegative"/>
                 <Property Name="SecMasterRole" Type="Edm.String" MaxLength="8" sap:display-format="NonNegative"/>
                 <Property Name="InterfaceCount" Type="Edm.String" MaxLength="8" sap:display-format="NonNegative"/>
-                <NavigationProperty Name="to_Header" Relationship="cds_zsd_hcl_eff_calc.assoc_B164FE7BCDD10462E73BA6FAA509C4DE" FromRole="FromRole_assoc_B164FE7BCDD10462E73BA6FAA509C4DE" ToRole="ToRole_assoc_B164FE7BCDD10462E73BA6FAA509C4DE"/>
             </EntityType>
-            <EntityType Name="zi_hcl_configType" sap:label="Configuration Data" sap:content-version="1">
+            <EntityType Name="zi_hcl_emailType" sap:label="Custom Entity for sending Emails" sap:content-version="1">
                 <Key>
-                    <PropertyRef Name="Version"/>
-                    <PropertyRef Name="SystemSize"/>
+                    <PropertyRef Name="SentToUser"/>
                 </Key>
+                <Property Name="SentToUser" Type="Edm.String" Nullable="false" MaxLength="12" sap:display-format="UpperCase" sap:label="Created By" sap:quickinfo="Created By User"/>
+                <Property Name="UserEmail" Type="Edm.String" MaxLength="128"/>
+                <Property Name="SentFlag" Type="Edm.String" MaxLength="1"/>
+            </EntityType>
+            <EntityType Name="zi_hcl_free_selType" sap:label="Value Help Free Selection" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="OpportunityId"/>
+                    <PropertyRef Name="Version"/>
+                </Key>
+                <Property Name="OpportunityId" Type="Edm.String" Nullable="false" MaxLength="10"/>
                 <Property Name="Version" Type="Edm.String" Nullable="false" MaxLength="2" sap:display-format="NonNegative"/>
-                <Property Name="SystemSize" Type="Edm.String" Nullable="false" MaxLength="1"/>
-                <Property Name="PlClcw" Type="Edm.Decimal" Precision="5" Scale="2"/>
-                <Property Name="PlUlcw" Type="Edm.Decimal" Precision="5" Scale="2"/>
-                <Property Name="PlLaslcw" Type="Edm.Decimal" Precision="5" Scale="2"/>
-                <Property Name="AlCal" Type="Edm.Decimal" Precision="5" Scale="2"/>
-                <Property Name="AlUal" Type="Edm.Decimal" Precision="5" Scale="2"/>
-                <Property Name="AlLasal" Type="Edm.Decimal" Precision="5" Scale="2"/>
-                <Property Name="PlCpl" Type="Edm.Decimal" Precision="5" Scale="2"/>
-                <Property Name="PlUpl" Type="Edm.Decimal" Precision="5" Scale="2"/>
-                <Property Name="PlLaspl" Type="Edm.Decimal" Precision="5" Scale="2"/>
-                <Property Name="PlGovMltplr" Type="Edm.Decimal" Precision="5" Scale="2"/>
-                <Property Name="TcCc" Type="Edm.Decimal" Precision="5" Scale="2"/>
-                <Property Name="TcUc" Type="Edm.Decimal" Precision="5" Scale="2"/>
-                <Property Name="TcLas" Type="Edm.Decimal" Precision="5" Scale="2"/>
-                <Property Name="CtCct" Type="Edm.Decimal" Precision="5" Scale="2"/>
-                <Property Name="CtUct" Type="Edm.Decimal" Precision="5" Scale="2"/>
-                <Property Name="CtLas" Type="Edm.Decimal" Precision="5" Scale="2"/>
-                <Property Name="SsrCssr" Type="Edm.String" MaxLength="4" sap:display-format="NonNegative"/>
-                <Property Name="SsrUssr" Type="Edm.String" MaxLength="4" sap:display-format="NonNegative"/>
-                <Property Name="SsrLasssr" Type="Edm.String" MaxLength="4" sap:display-format="NonNegative"/>
-                <Property Name="SsrSsem" Type="Edm.Decimal" Precision="5" Scale="2"/>
-                <Property Name="SsrAtce" Type="Edm.Decimal" Precision="5" Scale="2"/>
-                <Property Name="SecAvgeffMr" Type="Edm.String" MaxLength="4" sap:display-format="NonNegative"/>
-                <Property Name="SecAvgeffFiori" Type="Edm.String" MaxLength="4" sap:display-format="NonNegative"/>
-                <Property Name="SecConeffFiori" Type="Edm.String" MaxLength="4" sap:display-format="NonNegative"/>
-                <Property Name="SecUpgeffFiori" Type="Edm.String" MaxLength="4" sap:display-format="NonNegative"/>
-                <Property Name="SecLaseffFiori" Type="Edm.String" MaxLength="4" sap:display-format="NonNegative"/>
-                <Property Name="QfeCqfe" Type="Edm.String" MaxLength="4" sap:display-format="NonNegative"/>
-                <Property Name="QfeUqfe" Type="Edm.String" MaxLength="4" sap:display-format="NonNegative"/>
-                <Property Name="QfeLasqfe" Type="Edm.String" MaxLength="4" sap:display-format="NonNegative"/>
-                <Property Name="QfeAtsem" Type="Edm.Decimal" Precision="5" Scale="2"/>
-                <Property Name="FffConveffFiori" Type="Edm.String" MaxLength="4" sap:display-format="NonNegative"/>
-                <Property Name="FffUpdeffFiori" Type="Edm.String" MaxLength="4" sap:display-format="NonNegative"/>
-                <Property Name="FffLaseffFiori" Type="Edm.String" MaxLength="4" sap:display-format="NonNegative"/>
-                <Property Name="FffHpm" Type="Edm.Decimal" Precision="5" Scale="2"/>
-                <Property Name="FmcConvFmComplex" Type="Edm.String" MaxLength="4" sap:display-format="NonNegative"/>
-                <Property Name="FmcUfmc" Type="Edm.String" MaxLength="4" sap:display-format="NonNegative"/>
-                <Property Name="FmcLasFmComplex" Type="Edm.String" MaxLength="4" sap:display-format="NonNegative"/>
-                <Property Name="FmcLasFes" Type="Edm.String" MaxLength="4" sap:display-format="NonNegative"/>
-                <Property Name="FmcRemH" Type="Edm.String" MaxLength="4" sap:display-format="NonNegative"/>
-                <Property Name="FmcLasfd" Type="Edm.String" MaxLength="4" sap:display-format="NonNegative"/>
+                <Property Name="CustId" Type="Edm.String" MaxLength="20"/>
+                <Property Name="CustName" Type="Edm.String" MaxLength="50"/>
+                <Property Name="Comments" Type="Edm.String" MaxLength="255"/>
+                <Property Name="CreatedBy" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Created By" sap:quickinfo="Created By User"/>
+                <Property Name="UserAlias" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Alias" sap:quickinfo="Internet user alias"/>
+                <Property Name="SrvcCst" Type="Edm.Decimal" Precision="23" Scale="3" sap:unit="Currency" sap:variable-scale="true"/>
+                <Property Name="Currency" Type="Edm.String" MaxLength="5" sap:semantics="currency-code"/>
+                <Property Name="LastChangedAt" Type="Edm.Time" Precision="0" sap:label="Changed At" sap:quickinfo="Last Change Time"/>
+                <Property Name="LastChangedOn" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Changed On" sap:quickinfo="Last Change Date"/>
             </EntityType>
             <EntityType Name="zi_hcl_headerType" sap:label="Header Entity" sap:content-version="1">
                 <Key>
@@ -132,10 +108,9 @@
                 <Property Name="Arc" Type="Edm.Decimal" Precision="23" Scale="3" sap:unit="Currency" sap:variable-scale="true"/>
                 <Property Name="Currency" Type="Edm.String" MaxLength="5" sap:semantics="currency-code"/>
                 <Property Name="CreatedBy" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Created By" sap:quickinfo="Created By User"/>
+                <Property Name="UserAlias" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Alias" sap:quickinfo="Internet user alias"/>
                 <Property Name="LastChangedAt" Type="Edm.Time" Precision="0" sap:label="Changed At" sap:quickinfo="Last Change Time"/>
                 <Property Name="LastChangedOn" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Changed On" sap:quickinfo="Last Change Date"/>
-                <NavigationProperty Name="to_Baseline" Relationship="cds_zsd_hcl_eff_calc.assoc_3DBA4966693490620655ED39CE89DBAA" FromRole="FromRole_assoc_3DBA4966693490620655ED39CE89DBAA" ToRole="ToRole_assoc_3DBA4966693490620655ED39CE89DBAA"/>
-                <NavigationProperty Name="to_Config" Relationship="cds_zsd_hcl_eff_calc.assoc_33C6C9E09C23EAC04B6571A5132461BD" FromRole="FromRole_assoc_33C6C9E09C23EAC04B6571A5132461BD" ToRole="ToRole_assoc_33C6C9E09C23EAC04B6571A5132461BD"/>
                 <NavigationProperty Name="to_Opp" Relationship="cds_zsd_hcl_eff_calc.assoc_4671AF402974581E7BEBEBCA2AC96736" FromRole="FromRole_assoc_4671AF402974581E7BEBEBCA2AC96736" ToRole="ToRole_assoc_4671AF402974581E7BEBEBCA2AC96736"/>
                 <NavigationProperty Name="to_PlatformEffort" Relationship="cds_zsd_hcl_eff_calc.assoc_36CAF51DE624F672DA0DB25C94BECE09" FromRole="FromRole_assoc_36CAF51DE624F672DA0DB25C94BECE09" ToRole="ToRole_assoc_36CAF51DE624F672DA0DB25C94BECE09"/>
                 <NavigationProperty Name="to_PlatformEffortHD" Relationship="cds_zsd_hcl_eff_calc.assoc_4E10902265B125E1C769BD851F147E6E" FromRole="FromRole_assoc_4E10902265B125E1C769BD851F147E6E" ToRole="ToRole_assoc_4E10902265B125E1C769BD851F147E6E"/>
@@ -154,13 +129,30 @@
                 <Property Name="OpportunityId" Type="Edm.String" Nullable="false" MaxLength="10" sap:creatable="false" sap:updatable="false"/>
                 <Property Name="Version" Type="Edm.String" Nullable="false" MaxLength="2" sap:display-format="NonNegative" sap:creatable="false" sap:updatable="false"/>
                 <Property Name="CustId" Type="Edm.String" Nullable="false" MaxLength="20" sap:creatable="false" sap:updatable="false"/>
-                <Property Name="OppType" Type="Edm.String" Nullable="false" MaxLength="1" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="OppType" Type="Edm.String" Nullable="false" MaxLength="1" sap:display-format="UpperCase" sap:label="Opportunity Type" sap:creatable="false" sap:updatable="false"/>
                 <Property Name="CustName" Type="Edm.String" Nullable="false" MaxLength="50" sap:creatable="false" sap:updatable="false"/>
                 <Property Name="OppName" Type="Edm.String" Nullable="false" MaxLength="50" sap:creatable="false" sap:updatable="false"/>
                 <Property Name="CreatedBy" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Created By" sap:quickinfo="Created By User"/>
                 <Property Name="LastChangedAt" Type="Edm.Time" Precision="0" sap:label="Changed At" sap:quickinfo="Last Change Time"/>
                 <Property Name="LastChangedOn" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Changed On" sap:quickinfo="Last Change Date"/>
                 <NavigationProperty Name="to_Header" Relationship="cds_zsd_hcl_eff_calc.assoc_4671AF402974581E7BEBEBCA2AC96736" FromRole="ToRole_assoc_4671AF402974581E7BEBEBCA2AC96736" ToRole="FromRole_assoc_4671AF402974581E7BEBEBCA2AC96736"/>
+            </EntityType>
+            <EntityType Name="zi_hcl_opp_customType" sap:label="Custom Entity to generate Opp ID" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="OpportunityId"/>
+                    <PropertyRef Name="Version"/>
+                    <PropertyRef Name="CustId"/>
+                    <PropertyRef Name="OppType"/>
+                </Key>
+                <Property Name="OpportunityId" Type="Edm.String" Nullable="false" MaxLength="10"/>
+                <Property Name="Version" Type="Edm.String" Nullable="false" MaxLength="2" sap:display-format="NonNegative"/>
+                <Property Name="CustId" Type="Edm.String" Nullable="false" MaxLength="20"/>
+                <Property Name="OppType" Type="Edm.String" Nullable="false" MaxLength="1" sap:display-format="UpperCase" sap:label="Opportunity Type"/>
+                <Property Name="CustName" Type="Edm.String" MaxLength="50"/>
+                <Property Name="OppName" Type="Edm.String" MaxLength="50"/>
+                <Property Name="CreatedBy" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Created By" sap:quickinfo="Created By User"/>
+                <Property Name="LastChangedAt" Type="Edm.Time" Precision="0" sap:label="Changed At" sap:quickinfo="Last Change Time"/>
+                <Property Name="LastChangedOn" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Changed On" sap:quickinfo="Last Change Date"/>
             </EntityType>
             <EntityType Name="zi_hcl_pl_effType" sap:label="Platform Effort" sap:content-version="1">
                 <Key>
@@ -214,14 +206,14 @@
                 <Key>
                     <PropertyRef Name="OpportunityId"/>
                     <PropertyRef Name="Version"/>
-                    <PropertyRef Name="OppTypeWp"/>
+                    <PropertyRef Name="OppType"/>
                     <PropertyRef Name="EffType"/>
                     <PropertyRef Name="SystemSize"/>
                     <PropertyRef Name="EcLevel"/>
                 </Key>
                 <Property Name="OpportunityId" Type="Edm.String" Nullable="false" MaxLength="10" sap:creatable="false" sap:updatable="false"/>
                 <Property Name="Version" Type="Edm.String" Nullable="false" MaxLength="2" sap:display-format="NonNegative" sap:creatable="false" sap:updatable="false"/>
-                <Property Name="OppTypeWp" Type="Edm.String" Nullable="false" MaxLength="1" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="OppType" Type="Edm.String" Nullable="false" MaxLength="1" sap:creatable="false" sap:updatable="false"/>
                 <Property Name="EffType" Type="Edm.String" Nullable="false" MaxLength="40" sap:creatable="false" sap:updatable="false"/>
                 <Property Name="SystemSize" Type="Edm.String" Nullable="false" MaxLength="1" sap:creatable="false" sap:updatable="false"/>
                 <Property Name="EcLevel" Type="Edm.String" Nullable="false" MaxLength="2" sap:creatable="false" sap:updatable="false"/>
@@ -267,30 +259,23 @@
                 <Property Name="LTotEff" Type="Edm.String" MaxLength="6" sap:display-format="NonNegative"/>
                 <NavigationProperty Name="to_Header" Relationship="cds_zsd_hcl_eff_calc.assoc_07117E73E525E89D13E50CBDDE8C87AC" FromRole="ToRole_assoc_07117E73E525E89D13E50CBDDE8C87AC" ToRole="FromRole_assoc_07117E73E525E89D13E50CBDDE8C87AC"/>
             </EntityType>
-            <Association Name="assoc_3DBA4966693490620655ED39CE89DBAA" sap:content-version="1">
-                <End Type="cds_zsd_hcl_eff_calc.zi_hcl_headerType" Multiplicity="1" Role="FromRole_assoc_3DBA4966693490620655ED39CE89DBAA"/>
-                <End Type="cds_zsd_hcl_eff_calc.zi_hcl_baselineType" Multiplicity="0..1" Role="ToRole_assoc_3DBA4966693490620655ED39CE89DBAA"/>
-            </Association>
-            <Association Name="assoc_33C6C9E09C23EAC04B6571A5132461BD" sap:content-version="1">
-                <End Type="cds_zsd_hcl_eff_calc.zi_hcl_headerType" Multiplicity="1" Role="FromRole_assoc_33C6C9E09C23EAC04B6571A5132461BD"/>
-                <End Type="cds_zsd_hcl_eff_calc.zi_hcl_configType" Multiplicity="0..1" Role="ToRole_assoc_33C6C9E09C23EAC04B6571A5132461BD"/>
-            </Association>
-            <Association Name="assoc_4671AF402974581E7BEBEBCA2AC96736" sap:content-version="1">
-                <End Type="cds_zsd_hcl_eff_calc.zi_hcl_headerType" Multiplicity="1" Role="FromRole_assoc_4671AF402974581E7BEBEBCA2AC96736">
-                    <OnDelete Action="Cascade"/>
-                </End>
-                <End Type="cds_zsd_hcl_eff_calc.zi_hcl_oppType" Multiplicity="*" Role="ToRole_assoc_4671AF402974581E7BEBEBCA2AC96736"/>
-                <ReferentialConstraint>
-                    <Principal Role="FromRole_assoc_4671AF402974581E7BEBEBCA2AC96736">
-                        <PropertyRef Name="Version"/>
-                        <PropertyRef Name="OpportunityId"/>
-                    </Principal>
-                    <Dependent Role="ToRole_assoc_4671AF402974581E7BEBEBCA2AC96736">
-                        <PropertyRef Name="Version"/>
-                        <PropertyRef Name="OpportunityId"/>
-                    </Dependent>
-                </ReferentialConstraint>
-            </Association>
+            <EntityType Name="zi_hcl_value_helpType" sap:label="Value help for Opportunity ID" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="OpportunityId"/>
+                    <PropertyRef Name="Version"/>
+                </Key>
+                <Property Name="OpportunityId" Type="Edm.String" Nullable="false" MaxLength="10"/>
+                <Property Name="Version" Type="Edm.String" Nullable="false" MaxLength="2" sap:display-format="NonNegative"/>
+                <Property Name="CustId" Type="Edm.String" MaxLength="20"/>
+                <Property Name="CustName" Type="Edm.String" MaxLength="50"/>
+                <Property Name="Comments" Type="Edm.String" MaxLength="255"/>
+                <Property Name="CreatedBy" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Created By" sap:quickinfo="Created By User"/>
+                <Property Name="UserAlias" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Alias" sap:quickinfo="Internet user alias"/>
+                <Property Name="SrvcCst" Type="Edm.Decimal" Precision="23" Scale="3" sap:unit="Currency" sap:variable-scale="true"/>
+                <Property Name="Currency" Type="Edm.String" MaxLength="5" sap:semantics="currency-code"/>
+                <Property Name="LastChangedAt" Type="Edm.Time" Precision="0" sap:label="Changed At" sap:quickinfo="Last Change Time"/>
+                <Property Name="LastChangedOn" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Changed On" sap:quickinfo="Last Change Date"/>
+            </EntityType>
             <Association Name="assoc_36CAF51DE624F672DA0DB25C94BECE09" sap:content-version="1">
                 <End Type="cds_zsd_hcl_eff_calc.zi_hcl_headerType" Multiplicity="1" Role="FromRole_assoc_36CAF51DE624F672DA0DB25C94BECE09">
                     <OnDelete Action="Cascade"/>
@@ -355,38 +340,41 @@
                     </Dependent>
                 </ReferentialConstraint>
             </Association>
-            <Association Name="assoc_B164FE7BCDD10462E73BA6FAA509C4DE" sap:content-version="1">
-                <End Type="cds_zsd_hcl_eff_calc.zi_hcl_baselineType" Multiplicity="1" Role="FromRole_assoc_B164FE7BCDD10462E73BA6FAA509C4DE"/>
-                <End Type="cds_zsd_hcl_eff_calc.zi_hcl_headerType" Multiplicity="*" Role="ToRole_assoc_B164FE7BCDD10462E73BA6FAA509C4DE"/>
+            <Association Name="assoc_4671AF402974581E7BEBEBCA2AC96736" sap:content-version="1">
+                <End Type="cds_zsd_hcl_eff_calc.zi_hcl_headerType" Multiplicity="1" Role="FromRole_assoc_4671AF402974581E7BEBEBCA2AC96736">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <End Type="cds_zsd_hcl_eff_calc.zi_hcl_oppType" Multiplicity="*" Role="ToRole_assoc_4671AF402974581E7BEBEBCA2AC96736"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_assoc_4671AF402974581E7BEBEBCA2AC96736">
+                        <PropertyRef Name="Version"/>
+                        <PropertyRef Name="OpportunityId"/>
+                    </Principal>
+                    <Dependent Role="ToRole_assoc_4671AF402974581E7BEBEBCA2AC96736">
+                        <PropertyRef Name="Version"/>
+                        <PropertyRef Name="OpportunityId"/>
+                    </Dependent>
+                </ReferentialConstraint>
             </Association>
             <EntityContainer Name="cds_zsd_hcl_eff_calc_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
                 <EntitySet Name="zi_hcl_baseline" EntityType="cds_zsd_hcl_eff_calc.zi_hcl_baselineType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
-                <EntitySet Name="zi_hcl_config" EntityType="cds_zsd_hcl_eff_calc.zi_hcl_configType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="zi_hcl_email" EntityType="cds_zsd_hcl_eff_calc.zi_hcl_emailType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="zi_hcl_free_sel" EntityType="cds_zsd_hcl_eff_calc.zi_hcl_free_selType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
                 <EntitySet Name="zi_hcl_header" EntityType="cds_zsd_hcl_eff_calc.zi_hcl_headerType" sap:content-version="1"/>
                 <EntitySet Name="zi_hcl_opp" EntityType="cds_zsd_hcl_eff_calc.zi_hcl_oppType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="zi_hcl_opp_custom" EntityType="cds_zsd_hcl_eff_calc.zi_hcl_opp_customType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
                 <EntitySet Name="zi_hcl_pl_eff" EntityType="cds_zsd_hcl_eff_calc.zi_hcl_pl_effType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
                 <EntitySet Name="zi_hcl_pl_eff_hd" EntityType="cds_zsd_hcl_eff_calc.zi_hcl_pl_eff_hdType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
                 <EntitySet Name="zi_hcl_rls" EntityType="cds_zsd_hcl_eff_calc.zi_hcl_rlsType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
                 <EntitySet Name="zi_hcl_total" EntityType="cds_zsd_hcl_eff_calc.zi_hcl_totalType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="zi_hcl_value_help" EntityType="cds_zsd_hcl_eff_calc.zi_hcl_value_helpType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
                 <AssociationSet Name="assoc_4671AF402974581E7BEBEBCA2AC96736" Association="cds_zsd_hcl_eff_calc.assoc_4671AF402974581E7BEBEBCA2AC96736" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
                     <End EntitySet="zi_hcl_header" Role="FromRole_assoc_4671AF402974581E7BEBEBCA2AC96736"/>
                     <End EntitySet="zi_hcl_opp" Role="ToRole_assoc_4671AF402974581E7BEBEBCA2AC96736"/>
                 </AssociationSet>
-                <AssociationSet Name="assoc_B164FE7BCDD10462E73BA6FAA509C4DE" Association="cds_zsd_hcl_eff_calc.assoc_B164FE7BCDD10462E73BA6FAA509C4DE" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
-                    <End EntitySet="zi_hcl_baseline" Role="FromRole_assoc_B164FE7BCDD10462E73BA6FAA509C4DE"/>
-                    <End EntitySet="zi_hcl_header" Role="ToRole_assoc_B164FE7BCDD10462E73BA6FAA509C4DE"/>
-                </AssociationSet>
-                <AssociationSet Name="assoc_3DBA4966693490620655ED39CE89DBAA" Association="cds_zsd_hcl_eff_calc.assoc_3DBA4966693490620655ED39CE89DBAA" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
-                    <End EntitySet="zi_hcl_header" Role="FromRole_assoc_3DBA4966693490620655ED39CE89DBAA"/>
-                    <End EntitySet="zi_hcl_baseline" Role="ToRole_assoc_3DBA4966693490620655ED39CE89DBAA"/>
-                </AssociationSet>
                 <AssociationSet Name="assoc_915943EF30529D004A7B35AF2AE91AC0" Association="cds_zsd_hcl_eff_calc.assoc_915943EF30529D004A7B35AF2AE91AC0" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
                     <End EntitySet="zi_hcl_header" Role="FromRole_assoc_915943EF30529D004A7B35AF2AE91AC0"/>
                     <End EntitySet="zi_hcl_rls" Role="ToRole_assoc_915943EF30529D004A7B35AF2AE91AC0"/>
-                </AssociationSet>
-                <AssociationSet Name="assoc_33C6C9E09C23EAC04B6571A5132461BD" Association="cds_zsd_hcl_eff_calc.assoc_33C6C9E09C23EAC04B6571A5132461BD" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
-                    <End EntitySet="zi_hcl_header" Role="FromRole_assoc_33C6C9E09C23EAC04B6571A5132461BD"/>
-                    <End EntitySet="zi_hcl_config" Role="ToRole_assoc_33C6C9E09C23EAC04B6571A5132461BD"/>
                 </AssociationSet>
                 <AssociationSet Name="assoc_4E10902265B125E1C769BD851F147E6E" Association="cds_zsd_hcl_eff_calc.assoc_4E10902265B125E1C769BD851F147E6E" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
                     <End EntitySet="zi_hcl_header" Role="FromRole_assoc_4E10902265B125E1C769BD851F147E6E"/>
@@ -405,14 +393,6 @@
             <Annotations Target="cds_zsd_hcl_eff_calc.cds_zsd_hcl_eff_calc_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="Common.ApplyMultiUnitBehaviorForSortingAndFiltering" Bool="true"/>
             </Annotations>
-            <Annotations Target="cds_zsd_hcl_eff_calc.zi_hcl_headerType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
-                <Annotation Term="Common.ChangedAt" Path="LastChangedAt"/>
-                <Annotation Term="Common.CreatedBy" Path="CreatedBy"/>
-            </Annotations>
-            <Annotations Target="cds_zsd_hcl_eff_calc.zi_hcl_oppType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
-                <Annotation Term="Common.ChangedAt" Path="LastChangedAt"/>
-                <Annotation Term="Common.CreatedBy" Path="CreatedBy"/>
-            </Annotations>
             <Annotations Target="cds_zsd_hcl_eff_calc.zi_hcl_headerType/to_Opp" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="Common.Composition"/>
             </Annotations>
@@ -428,6 +408,12 @@
             <Annotations Target="cds_zsd_hcl_eff_calc.zi_hcl_headerType/to_TotalEffort" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="Common.Composition"/>
             </Annotations>
+            <Annotations Target="cds_zsd_hcl_eff_calc.zi_hcl_headerType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.CreatedBy" Path="CreatedBy"/>
+            </Annotations>
+            <Annotations Target="cds_zsd_hcl_eff_calc.zi_hcl_oppType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.CreatedBy" Path="CreatedBy"/>
+            </Annotations>
             <Annotations Target="cds_zsd_hcl_eff_calc.cds_zsd_hcl_eff_calc_Entities/zi_hcl_baseline" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="Capabilities.DeleteRestrictions">
                     <Record>
@@ -439,20 +425,21 @@
                         <PropertyValue Property="Insertable" Bool="false"/>
                     </Record>
                 </Annotation>
-                <Annotation Term="Capabilities.NavigationRestrictions">
+                <Annotation Term="Capabilities.UpdateRestrictions">
                     <Record>
-                        <PropertyValue Property="RestrictedProperties">
-                            <Collection>
-                                <Record>
-                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_Header"/>
-                                    <PropertyValue Property="InsertRestrictions">
-                                        <Record>
-                                            <PropertyValue Property="Insertable" Bool="true"/>
-                                        </Record>
-                                    </PropertyValue>
-                                </Record>
-                            </Collection>
-                        </PropertyValue>
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zsd_hcl_eff_calc.cds_zsd_hcl_eff_calc_Entities/zi_hcl_email" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="Insertable" Bool="false"/>
                     </Record>
                 </Annotation>
                 <Annotation Term="Capabilities.UpdateRestrictions">
@@ -461,7 +448,7 @@
                     </Record>
                 </Annotation>
             </Annotations>
-            <Annotations Target="cds_zsd_hcl_eff_calc.cds_zsd_hcl_eff_calc_Entities/zi_hcl_config" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotations Target="cds_zsd_hcl_eff_calc.cds_zsd_hcl_eff_calc_Entities/zi_hcl_free_sel" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="Capabilities.DeleteRestrictions">
                     <Record>
                         <PropertyValue Property="Deletable" Bool="false"/>
@@ -499,6 +486,23 @@
                                 <PropertyPath>to_Header</PropertyPath>
                             </Collection>
                         </PropertyValue>
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zsd_hcl_eff_calc.cds_zsd_hcl_eff_calc_Entities/zi_hcl_opp_custom" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record>
                         <PropertyValue Property="Updatable" Bool="false"/>
                     </Record>
                 </Annotation>
@@ -603,80 +607,22 @@
                     </Record>
                 </Annotation>
             </Annotations>
-            <Annotations Target="cds_zsd_hcl_eff_calc.zi_hcl_headerType/Arc" xmlns="http://docs.oasis-open.org/odata/ns/edm">
-                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Optional"/>
-            </Annotations>
-            <Annotations Target="cds_zsd_hcl_eff_calc.zi_hcl_headerType/AtcViolCount" xmlns="http://docs.oasis-open.org/odata/ns/edm">
-                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Optional"/>
-            </Annotations>
-            <Annotations Target="cds_zsd_hcl_eff_calc.zi_hcl_headerType/Comments" xmlns="http://docs.oasis-open.org/odata/ns/edm">
-                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Optional"/>
-            </Annotations>
-            <Annotations Target="cds_zsd_hcl_eff_calc.zi_hcl_headerType/CreatedBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
-                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Optional"/>
-            </Annotations>
-            <Annotations Target="cds_zsd_hcl_eff_calc.zi_hcl_headerType/Currency" xmlns="http://docs.oasis-open.org/odata/ns/edm">
-                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Optional"/>
-            </Annotations>
-            <Annotations Target="cds_zsd_hcl_eff_calc.zi_hcl_headerType/CustId" xmlns="http://docs.oasis-open.org/odata/ns/edm">
-                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Optional"/>
-            </Annotations>
-            <Annotations Target="cds_zsd_hcl_eff_calc.zi_hcl_headerType/CustName" xmlns="http://docs.oasis-open.org/odata/ns/edm">
-                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Optional"/>
-            </Annotations>
-            <Annotations Target="cds_zsd_hcl_eff_calc.zi_hcl_headerType/DurWeeks" xmlns="http://docs.oasis-open.org/odata/ns/edm">
-                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Optional"/>
-            </Annotations>
-            <Annotations Target="cds_zsd_hcl_eff_calc.zi_hcl_headerType/FioriSecCatRole" xmlns="http://docs.oasis-open.org/odata/ns/edm">
-                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Optional"/>
-            </Annotations>
-            <Annotations Target="cds_zsd_hcl_eff_calc.zi_hcl_headerType/FioriStdAppCount" xmlns="http://docs.oasis-open.org/odata/ns/edm">
-                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Optional"/>
-            </Annotations>
-            <Annotations Target="cds_zsd_hcl_eff_calc.zi_hcl_headerType/HighComplexFm" xmlns="http://docs.oasis-open.org/odata/ns/edm">
-                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Optional"/>
-            </Annotations>
-            <Annotations Target="cds_zsd_hcl_eff_calc.zi_hcl_headerType/InterfaceCount" xmlns="http://docs.oasis-open.org/odata/ns/edm">
-                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Optional"/>
-            </Annotations>
-            <Annotations Target="cds_zsd_hcl_eff_calc.zi_hcl_headerType/LastChangedAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
-                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Optional"/>
-            </Annotations>
-            <Annotations Target="cds_zsd_hcl_eff_calc.zi_hcl_headerType/LastChangedOn" xmlns="http://docs.oasis-open.org/odata/ns/edm">
-                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Optional"/>
-            </Annotations>
-            <Annotations Target="cds_zsd_hcl_eff_calc.zi_hcl_headerType/MedComplexFm" xmlns="http://docs.oasis-open.org/odata/ns/edm">
-                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Optional"/>
-            </Annotations>
-            <Annotations Target="cds_zsd_hcl_eff_calc.zi_hcl_headerType/NoOfCycles" xmlns="http://docs.oasis-open.org/odata/ns/edm">
-                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Optional"/>
-            </Annotations>
-            <Annotations Target="cds_zsd_hcl_eff_calc.zi_hcl_headerType/OppName" xmlns="http://docs.oasis-open.org/odata/ns/edm">
-                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Optional"/>
-            </Annotations>
-            <Annotations Target="cds_zsd_hcl_eff_calc.zi_hcl_headerType/OppType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
-                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Optional"/>
-            </Annotations>
-            <Annotations Target="cds_zsd_hcl_eff_calc.zi_hcl_headerType/SaveFlag" xmlns="http://docs.oasis-open.org/odata/ns/edm">
-                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Optional"/>
-            </Annotations>
-            <Annotations Target="cds_zsd_hcl_eff_calc.zi_hcl_headerType/SaveOrEdit" xmlns="http://docs.oasis-open.org/odata/ns/edm">
-                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Optional"/>
-            </Annotations>
-            <Annotations Target="cds_zsd_hcl_eff_calc.zi_hcl_headerType/SecMasterRole" xmlns="http://docs.oasis-open.org/odata/ns/edm">
-                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Optional"/>
-            </Annotations>
-            <Annotations Target="cds_zsd_hcl_eff_calc.zi_hcl_headerType/SimComplexFm" xmlns="http://docs.oasis-open.org/odata/ns/edm">
-                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Optional"/>
-            </Annotations>
-            <Annotations Target="cds_zsd_hcl_eff_calc.zi_hcl_headerType/SrvcCst" xmlns="http://docs.oasis-open.org/odata/ns/edm">
-                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Optional"/>
-            </Annotations>
-            <Annotations Target="cds_zsd_hcl_eff_calc.zi_hcl_headerType/SsDbSize" xmlns="http://docs.oasis-open.org/odata/ns/edm">
-                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Optional"/>
-            </Annotations>
-            <Annotations Target="cds_zsd_hcl_eff_calc.zi_hcl_headerType/SystemSize" xmlns="http://docs.oasis-open.org/odata/ns/edm">
-                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Optional"/>
+            <Annotations Target="cds_zsd_hcl_eff_calc.cds_zsd_hcl_eff_calc_Entities/zi_hcl_value_help" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
             </Annotations>
             <Annotations Target="cds_zsd_hcl_eff_calc.cds_zsd_hcl_eff_calc_Entities/zi_hcl_header" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="Capabilities.InsertRestrictions">

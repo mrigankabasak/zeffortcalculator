@@ -45,8 +45,14 @@ sap.ui.define([
 				let sEnteredValue = +this.getOwnerModel("oModelEstCal").getProperty("/" + sProperty);
 				let sBaseValue = +this.getOwnerModel("oModelSelectedBaseLine").getProperty("/" + sProperty);
 				let sRangeValue = +this.getOwnerModel("rangeData").getProperty("/" + sProperty);
-				MessageBox.information(`The difference between entered value and baseline value should be less than or equal to the range value. \n
-				Entered value(${sEnteredValue}) - Baseline(${sBaseValue}) <= Range value(${sRangeValue})`);
+				MessageBox.information(
+					`The difference between entered value and baseline value should be less than or equal to the range value. \n
+					 Entered value(${sEnteredValue}) - Baseline(${sBaseValue}) <= Range value(${sRangeValue}) \n\n
+					 Note: The typical Complexity of SAP Modules has been categorized as below. This will vary from Industry type: \n
+					 High 🡪 FICO & CVI \n
+					 Medium 🡪 MM , PP \n
+					 Low 🡪 SD,HCM,PP, PS ,PM, QM`					
+					) ;
 
 			},
 			checkwithBaseLine: function (oEvent, sProperty) {

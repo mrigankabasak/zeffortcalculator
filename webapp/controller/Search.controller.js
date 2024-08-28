@@ -13,10 +13,10 @@ sap.ui.define([
 		return BaseController.extend("com.zeffortcalculator.controller.Search", {
 			onInit: function () {
 				this.getView().addEventDelegate({
-                    onAfterRendering: ()=>{
-                        this.tbCustomerTemplate = this.getView().byId("tbCustomer")?.getBindingInfo("items")?.template;
-                    }   
-                });
+					onAfterRendering: () => {
+						this.tbCustomerTemplate = this.getView().byId("tbCustomer")?.getBindingInfo("items")?.template;
+					}
+				});
 				this.getRouter().getRoute("Search").attachPatternMatched(this.onSearchMatched, this);
 			},
 
@@ -29,7 +29,7 @@ sap.ui.define([
 					this.getOwnerModel("oModelEstCal").setProperty("/searchParam", "");
 					let oTable = this.getView().byId("tbCustomer");
 					oTable.setVisible(false);
-					oTable.unbindItems();	
+					oTable.unbindItems();
 
 				}
 			},
@@ -48,17 +48,16 @@ sap.ui.define([
 						operator: FilterOperator.EQ,
 						value1: this.getOwnerModel("oModelEstCal").getProperty("/searchParam")
 					}));
-					
+
 					oTable.bindItems({
 						path: "/zi_hcl_free_sel",
-						//template: oTable.getBindingInfo("items").template,
 						template: this?.tbCustomerTemplate,
 						filters: aFilter
 					});
 					oTable.setVisible(true);
-				}else{
+				} else {
 					oTable.setVisible(false);
-					oTable.unbindItems();					
+					oTable.unbindItems();
 				}
 			},
 
@@ -97,7 +96,7 @@ sap.ui.define([
 					this.loadFragment({
 						name: "com.zeffortcalculator.view.fragment.ValueHelpDialog"
 					}).then(function (oDialog) {
-						var oFilterBar = oDialog.getFilterBar(), oColumnOppId, oColumnCustId, oColumnCustName, oColumnCreatedOn;
+						var oFilterBar = oDialog.getFilterBar(), oColumnOppId, oColumnCustId, oColumnCustName, oColumnCreatedOn, oColumnCreatedBy;
 						this._oVHD = oDialog;
 
 						this.getView().addDependent(oDialog);
@@ -138,13 +137,21 @@ sap.ui.define([
 								oColumnCustName.data({
 									fieldName: "CustName"
 								});
-								oColumnCreatedOn = new sap.ui.table.Column({ label: new sap.m.Label({ text: "Created On" }), template: new sap.m.Text({ wrapping: false, text: "{LastChangedOn}" }) });
+
+								oColumnCreatedBy = new sap.ui.table.Column({ label: new sap.m.Label({ text: "Created By" }), template: new sap.m.Text({ wrapping: false, text: "{UserAlias}" }) });
+								oColumnCreatedBy.data({
+									fieldName: "UserAlias"
+								});
+
+								oColumnCreatedOn = new sap.ui.table.Column({ label: new sap.m.Label({ text: "Created On" }), 
+																			template: new sap.m.Text({ wrapping: false,	text: { path: 'LastChangedOn', type: 'sap.ui.model.type.Date', formatOptions: {pattern: 'MMM dd,yyyy'}} }) });
 								oColumnCreatedOn.data({
 									fieldName: "LastChangedOn"
 								});
 								oTable.addColumn(oColumnOppId);
 								oTable.addColumn(oColumnCustId);
 								oTable.addColumn(oColumnCustName);
+								oTable.addColumn(oColumnCreatedBy);
 								oTable.addColumn(oColumnCreatedOn);
 							}
 
@@ -154,7 +161,7 @@ sap.ui.define([
 								oTable.bindAggregation("items", {
 									path: "/custValueHelp",
 									template: new sap.m.ColumnListItem({
-										cells: [new sap.m.Label({ text: "{OpportunityId}" }), new sap.m.Label({ text: "{CustId}" }), new sap.m.Label({ text: "{CustName}", }), new sap.m.Label({ text: "{LastChangedOn}", })]
+										cells: [new sap.m.Label({ text: "{OpportunityId}" }), new sap.m.Label({ text: "{CustId}" }), new sap.m.Label({ text: "{CustName}" }), new sap.m.Label({ text: "{UserAlias}" }), new sap.m.Label({ text: { path: 'LastChangedOn', type: 'sap.ui.model.type.Date', formatOptions: {pattern: 'MMM dd,yyyy'}} })]
 									}),
 									events: {
 										dataReceived: function () {
@@ -164,8 +171,15 @@ sap.ui.define([
 								});
 								oTable.addColumn(new sap.m.Column({ header: new sap.m.Label({ text: "Opportunity ID" }) }));
 								oTable.addColumn(new sap.m.Column({ header: new sap.m.Label({ text: "Customer ID" }) }));
-								oTable.addColumn(new sap.m.Column({ header: new sap.m.Label({ text: "Customer Name" }) }));
-								oTable.addColumn(new sap.m.Column({ header: new sap.m.Label({ text: "Created On" }) }));
+								oTable.addColumn(new sap.m.Column(
+									{ header: new sap.m.Label({ text: "Customer Name" }), demandPopin: true, minScreenWidth: "Desktop" }
+								));
+								oTable.addColumn(new sap.m.Column(
+									{ header: new sap.m.Label({ text: "Created By" }), demandPopin: true, minScreenWidth: "Desktop" }
+								));
+								oTable.addColumn(new sap.m.Column(
+									{ header: new sap.m.Label({ text: "Created On" }), demandPopin: true, minScreenWidth: "Desktop" }
+								));
 							}
 							oDialog.update();
 						}.bind(this));

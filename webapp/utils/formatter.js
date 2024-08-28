@@ -22,7 +22,7 @@ sap.ui.define([], () => {
 				case "L":
 					return "Lift & Shift your S/4 System";
 				case "U":
-					return "Upgrade & Migrate your older S/4 HANA";
+					return "Upgrade & Migrate Your Older S/4 HANA";
 				case "C":
 					return "Conversion and Migration of ECC";
 				default:

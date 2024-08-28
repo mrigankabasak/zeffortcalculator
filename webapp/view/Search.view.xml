@@ -4,8 +4,13 @@
 	xmlns:mdc="sap.ui.mdc"
     xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core"
 	xmlns:mdcValueHelp="sap.ui.mdc.valuehelp"
+	xmlns:smartMultiInput="sap.ui.comp.smartmultiinput"
+    xmlns:smartForm="sap.ui.comp.smartform"
+	xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
+	xmlns:smartTable="sap.ui.comp.smarttable"
 	xmlns:mdcValueHelpContent="sap.ui.mdc.valuehelp.content" >
-    <Page id="page" title="Search" showNavButton="true" titleAlignment="Center"
+    
+	<Page id="page" title="Search" showNavButton="true" titleAlignment="Center"
 		navButtonPress=".onNavBack">
         <content>
 		<core:Fragment fragmentName="com.zeffortcalculator.view.fragment.HCL" type="XML" />
@@ -55,11 +60,17 @@
 						<Column hAlign="Left" >
 							<Label design="Bold" text="Version" />
 						</Column>
+						<Column hAlign="Left" >
+							<Label design="Bold" text="Price" />
+						</Column>
 						<Column	minScreenWidth="Desktop" demandPopin="true"	hAlign="Left"  >
 							<Label design="Bold" text="Comment"/>
 						</Column>
-						<Column hAlign="Left" >
+						<Column minScreenWidth="Desktop" demandPopin="true"	hAlign="Left"  >
 							<Label design="Bold" text="Created By" />
+						</Column>
+						<Column minScreenWidth="Desktop" demandPopin="true"	hAlign="Left"  >
+							<Label design="Bold" text="Created on" />
 						</Column>					
 					</columns>
 					<items>
@@ -68,9 +79,11 @@
 								
 								<ObjectIdentifier title="{CustId}" />
 								<Text text="{OpportunityId}" />
-								<Text text="{Version}" textAlign="Right"/>
+								<Text text="{Version}" textAlign="Left"/>
+								<Text text="{SrvcCst} {Currency}" textAlign="Left"/>
 								<Text text="{Comments}" textAlign="Left" />
-								<Text text="{CreatedBy}" textAlign="Left" />
+								<Text text="{UserAlias}" textAlign="Left" />
+								<Text text="{ path: 'LastChangedOn', type: 'sap.ui.model.type.Date', formatOptions: {pattern: 'MMM dd,yyyy'}}" />
 							</cells>
 						</ColumnListItem>					
 					</items>
