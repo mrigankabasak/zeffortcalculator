@@ -20,7 +20,7 @@
 							<Text text="{oModelEstCal>/OpportunityId}" />
 							<Label text="Version" design="Bold"/>
 							<Text text="{oModelEstCal>/Version}" />
-							<Label  text="Workpackage" design="Bold"/>
+							<Label  text="Work Package" design="Bold"/>
 							<Text text="{ path: 'oModelEstCal>/OppType', formatter: '.formatter.getWorkpackage' }"/>								
 							<Label text="Source System DB Size (in TB)" design="Bold" required="true" class="cutomRequired"/>
 							<HBox>

@@ -11,13 +11,13 @@
 					<f:SimpleForm maxContainerCols="2" layout="ResponsiveLayout" editable="true" visible="true">
 							<f:content>
 								<Label  text="Customer ID" design="Bold"/>
-								<Input  value="{oModelEstCal>/CustId}" required="true"  width="40%"/>
+								<Input  value="{oModelEstCal>/CustId}" required="true"  width="40%" maxLength="6"/>
 								<Label  text="Customer Name" design="Bold"/>
 								<Input   value="{oModelEstCal>/CustName}"  required="true"  width="40%"/>
 								
 								<Label  text="Opportunity Name" design="Bold"/>
 								<Input   value="{oModelEstCal>/OppName}" required="true"  width="40%"/>		
-								<Label  text="Workpackage" class="cutomRequired" design="Bold"/>							
+								<Label  text="Work Package" class="cutomRequired" design="Bold"/>							
 									<VBox justifyContent="SpaceBetween">
 										<RadioButton id="radio_L"  text="Lift and Shift your S/4 System" select=".onWorkpackage($event ,'L')"  />
 										<RadioButton id="radio_U" text="Upgrade and Migrate Your Older S/4 HANA" select=".onWorkpackage($event ,'U')" />

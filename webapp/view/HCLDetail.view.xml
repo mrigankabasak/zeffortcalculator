@@ -20,7 +20,7 @@
 							<Text text="{oModelEstCal>/CustName}" />
 							<Label text="Opportunity Name" design="Bold"/>
 							<Text text="{oModelEstCal>/OppName}" />
-							<Label text="Workpackage" design="Bold"/>
+							<Label text="Work Package" design="Bold"/>
 							<Text text="{ path: 'oModelEstCal>/OppType', formatter: '.formatter.getWorkpackage' }" />
 							<Label text="Opportunity ID" design="Bold"/>
 							<Text text="{oModelEstCal>/OpportunityId}" />
@@ -114,8 +114,8 @@
 									<ColumnListItem vAlign="Middle" >
 										<cells>
 											<Text text="{oModelEstCal>EffType}"/>
-											<!-- <Text text="{= ${pgUiData>/hoursOrMonth} === 'M' ? ${oModelEstCal>TotEffD} : ${oModelEstCal>TotEffH} }" /> -->
-											<Text text="{= ${pgUiData>/hoursOrMonth} === 'M' ? ${path:'oModelEstCal>TotEffD', type: 'sap.ui.model.type.Integer'	} : ${oModelEstCal>TotEffH}    }" />
+											<Text text="{= ${pgUiData>/hoursOrMonth} === 'M' ? ${oModelEstCal>TotEffD} : ${oModelEstCal>TotEffH} }" />
+											<!-- <Text text="{= ${pgUiData>/hoursOrMonth} === 'M' ? ${path:'oModelEstCal>TotEffD', type: 'sap.ui.model.type.Integer'	} : ${oModelEstCal>TotEffH}    }" /> -->
 											<Text text="{= ${pgUiData>/hoursOrMonth} === 'M' ? ${oModelEstCal>L4ManMnth} : ${oModelEstCal>L4ManHr} }" visible="true"/>
 											<Text text="{= ${pgUiData>/hoursOrMonth} === 'M' ? ${oModelEstCal>L3ManMnth} : ${oModelEstCal>L3ManHr} }" visible="true"/>
 											<Text text="{= ${pgUiData>/hoursOrMonth} === 'M' ? ${oModelEstCal>L2ManMnth} : ${oModelEstCal>L2ManHr} }" visible="true" />
@@ -154,14 +154,14 @@
 										<cells>
 											<Text text="{oModelEstCal>EffType}" />
 											<Text text="{path: 'oModelEstCal>TotEffortInHours', formatter: '.formatter.convertTwoDecimal' }" />											
-											<Text text="{path:'oModelEstCal>TotEffortInDays', type: 'sap.ui.model.type.Integer'	}" textAlign="Right" />
+											<!-- <Text text="{path:'oModelEstCal>TotEffortInDays', type: 'sap.ui.model.type.Integer'	}" textAlign="Right" /> -->
+											<Text text="{path: 'oModelEstCal>TotEffortInHours', formatter: '.formatter.MathRound' }" textAlign="Right" />
 										</cells>
 									</ColumnListItem>
 								</items>
 							</Table>
 						</VBox>
-					</IconTabFilter>
-					
+					</IconTabFilter>					
 					<IconTabFilter text="{ path: 'oModelEstCal>/OppType', formatter: '.formatter.getWorkpackage' }">
 						<VBox  class="">
 							<Table inset="true" items="{oModelEstCal>/to_ResourceEff/results}" alternateRowColors="true">
@@ -246,7 +246,7 @@
 							</Table>
 						</VBox>
 					</IconTabFilter>
-					<IconTabFilter text="Workpackage Additional Details">
+					<IconTabFilter text="Work Package Additional Details">
 						<VBox  class="">
 							<m:Table id="table1" ariaLabelledBy="title"  selectionMode="None" rows="{oModelEstCal>/to_TotalEffort/results}"
 								enableColumnFreeze="true" showColumnVisibilityMenu="true">

@@ -110,7 +110,8 @@ sap.ui.define([
 						ele.L2ManMnth = formatter.convertTwoDecimal(ele.L2ManMnth.trim());
 						ele.L1ManHr = formatter.convertTwoDecimal(ele.L1ManHr.trim());
 						ele.L1ManMnth = formatter.convertTwoDecimal(ele.L1ManMnth.trim());
-						ele.TotEffD = formatter.convertTwoDecimal(ele.TotEffD.trim());
+						//ele.TotEffD = Math.round(formatter.convertTwoDecimal(ele.TotEffD.trim()));
+						ele.TotEffD = Math.round(ele.TotEffD.trim());
 						ele.TotEffH = formatter.convertTwoDecimal(ele.TotEffH.trim());
 					});
 					this.getOwnerModel("oModelEstCal").setData(response.results[0]);

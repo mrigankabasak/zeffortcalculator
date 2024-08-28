@@ -54,6 +54,14 @@ sap.ui.define([], () => {
 			}
 		},
 
+		MathRound: function(val){
+			if (val) {
+				return Math.round(val);
+			} else {
+				return "";
+			}
+		},
+
 		getFVisible: function (chkVal) {
 			if (chkVal) {
 				if (chkVal.trim() === 'L')

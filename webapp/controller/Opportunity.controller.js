@@ -50,7 +50,7 @@ sap.ui.define([
 
                         sap.ui.core.BusyIndicator.hide();
                         
-                            MessageBox.information("Opportunity ID " + result.OpportunityId + " has been Created for future reference", {    
+                            MessageBox.information("Opportunity ID " + result.OpportunityId + " has been created for future reference", {    
                             actions: [MessageBox.Action.OK],
                             emphasizedAction: MessageBox.Action.OK,
                             onClose: () => {
