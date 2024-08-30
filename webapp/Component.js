@@ -36,37 +36,37 @@ sap.ui.define([
 
                 // set pgUiData model
                 let oModel = new JSONModel();
-                oModel.setData({ "enableTableData": false, "errors": false, "showBaseLines": true, "hoursOrMonth": "M"  });
+                oModel.setData({ "enableTableData": false, "errors": false, "showBaseLines": true, "hoursOrMonth": "M" });
                 // ** hoursOrMonth used for swicth between Hours or Month Resource view. By Defualt setting the parameter to M-Month. on change of radio button set H-Hours, and vice versa (HCL detailpage)
                 this.setModel(oModel, "pgUiData");
-        
-                this.getModel().metadataLoaded().then(()=>{
-                    
+
+                this.getModel().metadataLoaded().then(() => {
+
                     this.setModel(models.getEcInputModel(this.getModel()), "oModelEstCal");                 /* oModelEstCal = global model for application */
                     this.setModel(models.getEcBaseLineModel(this.getModel()), "oModelSelectedBaseLine");    /* oModelBaseLine = Selected BaseLine model for application */
-                    
+
                     //this.getModel().read("/oModelSelectedBaseLineSet", {
-                    this.getModel().read("/zi_hcl_baseline", {    
-                        success: (oData)=> {
+                    this.getModel().read("/zi_hcl_baseline", {
+                        success: (oData) => {
                             let oJsModel = new JSONModel();
                             oJsModel.setData(oData.results);
-                            this.setModel(oJsModel, "oModelBaseLineDataSet");       /*  Dataset model for Baselines of the application */  
-                         },
-                        error: (oError)=> { 
+                            this.setModel(oJsModel, "oModelBaseLineDataSet");       /*  Dataset model for Baselines of the application */
+                        },
+                        error: (oError) => {
                             console.log(oError);
-                         }
-                      });
+                        }
+                    });
                 });
 
             },
 
-            destroy : function () {
+            destroy: function () {
                 this._oErrorHandler.destroy();
                 // call the base component's destroy function
                 UIComponent.prototype.destroy.apply(this, arguments);
             },
 
-            getContentDensityClass : function() {
+            getContentDensityClass: function () {
                 if (this._sContentDensityClass === undefined) {
                     // check whether FLP has already set the content density class; do nothing in this case
                     if (document.body.classList.contains("sapUiSizeCozy") || document.body.classList.contains("sapUiSizeCompact")) {

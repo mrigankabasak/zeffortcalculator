@@ -155,7 +155,7 @@
 											<Text text="{oModelEstCal>EffType}" />
 											<Text text="{path: 'oModelEstCal>TotEffortInHours', formatter: '.formatter.convertTwoDecimal' }" />											
 											<!-- <Text text="{path:'oModelEstCal>TotEffortInDays', type: 'sap.ui.model.type.Integer'	}" textAlign="Right" /> -->
-											<Text text="{path: 'oModelEstCal>TotEffortInHours', formatter: '.formatter.MathRound' }" textAlign="Right" />
+											<Text text="{path: 'oModelEstCal>TotEffortInDays', formatter: '.formatter.MathRound' }" textAlign="Right" />
 										</cells>
 									</ColumnListItem>
 								</items>
