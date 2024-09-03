@@ -1,9 +1,13 @@
 sap.ui.define([
 	"./BaseController",
+	"sap/ui/core/routing/History",
 	"sap/ui/model/Filter",
-	"sap/ui/model/FilterOperator"
+	"sap/ui/model/FilterOperator",
+	"sap/ui/table/Column",
+	"sap/m/Column",
+	"sap/m/Text"
 ],
-	function (BaseController, Filter, FilterOperator) {
+	function (BaseController, History, Filter, FilterOperator, UIColumn, MColumn, Text) {
 		"use strict";
 
 		return BaseController.extend("com.zeffortcalculator.controller.Search", {

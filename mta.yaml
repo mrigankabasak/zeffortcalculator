@@ -33,6 +33,7 @@ modules:
         existing_destinations_policy: ignore
   build-parameters:
     no-source: true
+
 - name: comzeffortcalculator-app-content
   type: com.sap.application.content
   path: .
@@ -47,6 +48,7 @@ modules:
       - comzeffortcalculator.zip
       name: comzeffortcalculator
       target-path: resources/
+
 - name: comzeffortcalculator
   type: html5
   path: .
@@ -57,7 +59,9 @@ modules:
     - npm install
     - npm run build:cf
     supported-platforms: []
+
 resources:
+
 - name: comzeffortcalculator-destination-service
   type: org.cloudfoundry.managed-service
   parameters:
@@ -76,6 +80,7 @@ resources:
     service: destination
     service-name: comzeffortcalculator-destination-service
     service-plan: lite
+
 - name: comzeffortcalculator-uaa
   type: org.cloudfoundry.managed-service
   parameters:
@@ -83,6 +88,7 @@ resources:
     service: xsuaa
     service-name: comzeffortcalculator-xsuaa-srv
     service-plan: application
+
 - name: comzeffortcalculator-repo-host
   type: org.cloudfoundry.managed-service
   parameters:

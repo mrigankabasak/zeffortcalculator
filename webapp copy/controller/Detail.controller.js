@@ -1,9 +1,23 @@
 sap.ui.define([
 	"./BaseController",
-	"../utils/formatter"
+	"com/zeffortcalculator/model/models",
+	"sap/ui/core/routing/History",
+	"../utils/formatter",
+	"sap/m/MessageBox",
+	"sap/m/Dialog",
+	"sap/m/Button",
+	"sap/m/TextArea",
+	"sap/ui/layout/HorizontalLayout",
+	"sap/ui/layout/VerticalLayout",
+	"sap/m/library",
+	"sap/m/Text",
+	"sap/m/VBox",
+	"sap/m/Label"
 ],
-	function (BaseController, formatter ) {
+	function (BaseController, models, History, formatter, MessageBox, Dialog, Button, TextArea, HorizontalLayout, VerticalLayout, mobileLibrary, Text, VBox, Label) {
 		"use strict";
+		let ButtonType = mobileLibrary.ButtonType;
+		let DialogType = mobileLibrary.DialogType;
 		return BaseController.extend("com.zeffortcalculator.controller.Detail", {
 			formatter: formatter,
 			onInit: function () {

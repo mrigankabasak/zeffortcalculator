@@ -16,10 +16,8 @@ sap.ui.define([
 			_onObjectFetched: function () {
 				this.getView().loaded().then(() => {
 					this.getOwnerModel("pgUiData").setProperty("/showBaseLines", false);
-					if (this.getOwnerModel("oModelEstCal").getProperty("/SsDbSize")){
+					if (this.getOwnerModel("oModelEstCal").getProperty("/SsDbSize"))
 						this.getView().byId("SsDbSize").fireChange({ value: this.getOwnerModel("oModelEstCal").getProperty("/SsDbSize") });
-						this.getOwnerModel("oModelEstCal").setProperty("/SaveOrEdit", "");
-					}
 
 				});
 
@@ -64,8 +62,8 @@ sap.ui.define([
 				MessageBox.information(
 					`The difference between entered value and baseline value should be less than or equal to the range value. \n
 					 Entered value(${sEnteredValue}) - Baseline(${sBaseValue}) <= Range value(${sRangeValue})
-					 ${sType}`
-				);
+					 ${sType}`					
+					) ;
 
 			},
 			checkwithBaseLine: function (oEvent, sProperty) {
@@ -135,19 +133,13 @@ sap.ui.define([
 				let sProperties = ["NoOfCycles", "HighComplexFm", "MedComplexFm", "SimComplexFm", "AtcViolCount", "FioriStdAppCount", "FioriSecCatRole", "SecMasterRole", "InterfaceCount"];
 				let ooModelSelectedBaseLine = this.getOwnerModel("oModelSelectedBaseLine").getData();
 
-				// if (this.getOwnerModel("oModelEstCal").getProperty("/NoOfCycles") == "" || this.getOwnerModel("oModelEstCal").getProperty("/NoOfCycles") == null) {
-				// 	sProperties.forEach((sProperty) => {
-				// 		this.getOwnerModel("oModelEstCal").setProperty("/" + sProperty, +ooModelSelectedBaseLine[sProperty]);
-				// 	});
-				// }
-				if (this.getOwnerModel("oModelEstCal").getProperty("/SaveOrEdit") != "E") {
+				if (this.getOwnerModel("oModelEstCal").getProperty("/NoOfCycles") == "" || this.getOwnerModel("oModelEstCal").getProperty("/NoOfCycles") == null) {
 					sProperties.forEach((sProperty) => {
 						this.getOwnerModel("oModelEstCal").setProperty("/" + sProperty, +ooModelSelectedBaseLine[sProperty]);
 					});
 				}
 
 			},
-
 			onCalculate: function () {
 				let oData = this.getOwnerModel("oModelEstCal").getData();
 				if (oData.SsDbSize == "" || oData.NoOfCycles == "") {
@@ -194,8 +186,8 @@ sap.ui.define([
 						onClose: () => {
 							//this.getRouter().navTo("Detail", {}, false);
 							this.getRouter().navTo("Detail", {
-								CustId: result.CustId.trim(),
-								OpportunityId: result.OpportunityId.trim(),
+								CustId: result.CustId.trim() ,
+								OpportunityId: result.OpportunityId.trim() ,
 								Version: result.Version.trim()
 							}, false);
 							return;
@@ -216,7 +208,7 @@ sap.ui.define([
 					oEvent.getSource().setValue(+sSourceDB.slice(0, -1));
 					return;
 				}
-			},
+			},		
 
 			onReset: function () {
 				let oInputs = this.getOwnerModel("oModelEstCal");
@@ -231,7 +223,6 @@ sap.ui.define([
 				oInputs.setProperty("/SecMasterRole", "");
 				oInputs.setProperty("/InterfaceCount", "");
 				oInputs.setProperty("/Comments", "");
-				oInputs.setProperty("/SaveOrEdit", "");
 				this.getOwnerModel("pgUiData").setProperty("/showBaseLines", false);
 			},
 
