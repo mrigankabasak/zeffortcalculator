@@ -1,11 +1,18 @@
 sap.ui.define([
 	"./BaseController",
+	"sap/ui/core/library",
 	"sap/ui/model/Filter",
-	"sap/ui/model/FilterOperator"
+	"sap/ui/model/FilterOperator",
+	"sap/m/SearchField",
+	"sap/ui/table/Column",
+	"sap/m/Label",
+	"sap/m/Text",
+	"sap/m/ColumnListItem",
+	"sap/m/Column"
 ],
-	function (BaseController, Filter, FilterOperator) {
+	function (BaseController, CoreLib, Filter, FilterOperator, SearchField, Column, Label, Text, ColumnListItem) {
 		"use strict";
-
+		const { BusyIndicator } = CoreLib;
 		return BaseController.extend("com.zeffortcalculator.controller.Search", {
 			onInit: function () {
 				this.getView().addEventDelegate({
@@ -70,13 +77,13 @@ sap.ui.define([
 
 			handleValueHelp: function () {
 				// Loading F4 help from S4
-				sap.ui.core.BusyIndicator.show();
+				BusyIndicator.show();
 				let oF4Help = this.callBackEnd("/zi_hcl_value_help", "GET", [], {}, {});
 				oF4Help.then((oResponse) => {
 					let result = oResponse.data.results;
 					this.getOwnerModel("oModelEstCal").setProperty("/custValueHelp", result);
-					sap.ui.core.BusyIndicator.hide();
-					this._oBasicSearchField = new sap.m.SearchField();
+					BusyIndicator.hide();
+					this._oBasicSearchField = new SearchField();
 					this.loadFragment({
 						name: "com.zeffortcalculator.view.fragment.ValueHelpDialog"
 					}).then(function (oDialog) {
@@ -109,26 +116,26 @@ sap.ui.define([
 										}
 									}
 								});
-								oColumnOppId = new sap.ui.table.Column({ label: new sap.m.Label({ text: "Opportunity ID" }), template: new sap.m.Text({ wrapping: false, text: "{OpportunityId}" }) });
+								oColumnOppId = new Column({ label: new Label({ text: "Opportunity ID" }), template: new Text({ wrapping: false, text: "{OpportunityId}" }) });
 								oColumnOppId.data({
 									fieldName: "OpportunityId"
 								});
-								oColumnCustId = new sap.ui.table.Column({ label: new sap.m.Label({ text: "Customer ID" }), template: new sap.m.Text({ wrapping: false, text: "{CustId}" }) });
+								oColumnCustId = new Column({ label: new Label({ text: "Customer ID" }), template: new Text({ wrapping: false, text: "{CustId}" }) });
 								oColumnCustId.data({
 									fieldName: "CustId"
 								});
-								oColumnCustName = new sap.ui.table.Column({ label: new sap.m.Label({ text: "Customer Name" }), template: new sap.m.Text({ wrapping: false, text: "{CustName}" }) });
+								oColumnCustName = new Column({ label: new Label({ text: "Customer Name" }), template: new Text({ wrapping: false, text: "{CustName}" }) });
 								oColumnCustName.data({
 									fieldName: "CustName"
 								});
 
-								oColumnCreatedBy = new sap.ui.table.Column({ label: new sap.m.Label({ text: "Created By" }), template: new sap.m.Text({ wrapping: false, text: "{UserAlias}" }) });
+								oColumnCreatedBy = new Column({ label: new Label({ text: "Created By" }), template: new Text({ wrapping: false, text: "{UserAlias}" }) });
 								oColumnCreatedBy.data({
 									fieldName: "UserAlias"
 								});
 
-								oColumnCreatedOn = new sap.ui.table.Column({ label: new sap.m.Label({ text: "Created On" }), 
-																			template: new sap.m.Text({ wrapping: false,	text: { path: 'LastChangedOn', type: 'sap.ui.model.type.Date', formatOptions: {pattern: 'MMM dd,yyyy'}} }) });
+								oColumnCreatedOn = new Column({ label: new Label({ text: "Created On" }), 
+																			template: new Text({ wrapping: false,	text: { path: 'LastChangedOn', type: 'sap.ui.model.type.Date', formatOptions: {pattern: 'MMM dd,yyyy'}} }) });
 								oColumnCreatedOn.data({
 									fieldName: "LastChangedOn"
 								});
@@ -144,8 +151,8 @@ sap.ui.define([
 								// Bind items to the ODataModel and add columns
 								oTable.bindAggregation("items", {
 									path: "/custValueHelp",
-									template: new sap.m.ColumnListItem({
-										cells: [new sap.m.Label({ text: "{OpportunityId}" }), new sap.m.Label({ text: "{CustId}" }), new sap.m.Label({ text: "{CustName}" }), new sap.m.Label({ text: "{UserAlias}" }), new sap.m.Label({ text: { path: 'LastChangedOn', type: 'sap.ui.model.type.Date', formatOptions: {pattern: 'MMM dd,yyyy'}} })]
+									template: new ColumnListItem({
+										cells: [new Label({ text: "{OpportunityId}" }), new Label({ text: "{CustId}" }), new Label({ text: "{CustName}" }), new Label({ text: "{UserAlias}" }), new Label({ text: { path: 'LastChangedOn', type: 'sap.ui.model.type.Date', formatOptions: {pattern: 'MMM dd,yyyy'}} })]
 									}),
 									events: {
 										dataReceived: function () {
@@ -153,16 +160,16 @@ sap.ui.define([
 										}
 									}
 								});
-								oTable.addColumn(new sap.m.Column({ header: new sap.m.Label({ text: "Opportunity ID" }) }));
-								oTable.addColumn(new sap.m.Column({ header: new sap.m.Label({ text: "Customer ID" }) }));
-								oTable.addColumn(new sap.m.Column(
-									{ header: new sap.m.Label({ text: "Customer Name" }), demandPopin: true, minScreenWidth: "Desktop" }
+								oTable.addColumn(new Column({ header: new Label({ text: "Opportunity ID" }) }));
+								oTable.addColumn(new Column({ header: new Label({ text: "Customer ID" }) }));
+								oTable.addColumn(new Column(
+									{ header: new Label({ text: "Customer Name" }), demandPopin: true, minScreenWidth: "Desktop" }
 								));
-								oTable.addColumn(new sap.m.Column(
-									{ header: new sap.m.Label({ text: "Created By" }), demandPopin: true, minScreenWidth: "Desktop" }
+								oTable.addColumn(new Column(
+									{ header: new Label({ text: "Created By" }), demandPopin: true, minScreenWidth: "Desktop" }
 								));
-								oTable.addColumn(new sap.m.Column(
-									{ header: new sap.m.Label({ text: "Created On" }), demandPopin: true, minScreenWidth: "Desktop" }
+								oTable.addColumn(new Column(
+									{ header: new Label({ text: "Created On" }), demandPopin: true, minScreenWidth: "Desktop" }
 								));
 							}
 							oDialog.update();
@@ -171,7 +178,7 @@ sap.ui.define([
 						oDialog.open();
 					}.bind(this));
 				}).catch((error) => {
-					sap.ui.core.BusyIndicator.hide();
+					BusyIndicator.hide();
 					console.log(error);
 				});
 			},

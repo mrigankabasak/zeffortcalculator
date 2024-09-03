@@ -1,8 +1,10 @@
 sap.ui.define([
 	"sap/ui/core/mvc/Controller",
 	"sap/ui/core/routing/History",
-	"../utils/formatter"
-], function (Controller, History, formatter) {
+	"../utils/formatter",
+	"sap/ui/model/Filter",
+	"sap/ui/model/FilterOperator"
+], function (Controller, History, formatter, Filter, FilterOperator) {
 	"use strict";
 	return Controller.extend("com.zeffortcalculator.controller.BaseController", {
 		formatter: formatter,
@@ -33,9 +35,9 @@ sap.ui.define([
 		},
 
 		createFilter: function (path, value) {
-			return new sap.ui.model.Filter({
+			return new Filter({
 				path: path,
-				operator: sap.ui.model.FilterOperator.EQ,
+				operator: FilterOperator.EQ,
 				value1: value
 			});
 		},

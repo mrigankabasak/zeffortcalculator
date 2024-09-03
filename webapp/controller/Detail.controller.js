@@ -1,9 +1,11 @@
 sap.ui.define([
 	"./BaseController",
+	"sap/ui/core/library",
 	"../utils/formatter"
 ],
-	function (BaseController, formatter ) {
+	function (BaseController, CoreLib, formatter ) {
 		"use strict";
+		const { BusyIndicator } = CoreLib;
 		return BaseController.extend("com.zeffortcalculator.controller.Detail", {
 			formatter: formatter,
 			onInit: function () {
@@ -32,16 +34,16 @@ sap.ui.define([
 					this.createFilter("OpportunityId", oEvent.getParameter("arguments").OpportunityId),
 					this.createFilter("Version", oEvent.getParameter("arguments").Version)
 					];
-					sap.ui.core.BusyIndicator.show();
+					BusyIndicator.show();
 					let oDetailData = this.callBackEnd("/zi_hcl_header", "GET", filters, {}, {});
 	
 					oDetailData.then((oResponse) => {
 						let response = oResponse.data;
 						this.getOwnerModel("oModelEstCal").setData({});
 						this.getOwnerModel("oModelEstCal").setData(response.results[0]);
-						sap.ui.core.BusyIndicator.hide();
+						BusyIndicator.hide();
 					}).catch((error) => {
-						sap.ui.core.BusyIndicator.hide();
+						BusyIndicator.hide();
 						console.log(error);
 					});
 				}

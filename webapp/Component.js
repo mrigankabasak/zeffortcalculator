@@ -37,7 +37,6 @@ sap.ui.define([
                 // set pgUiData model
                 let oModel = new JSONModel();
                 oModel.setData({ "enableTableData": false, "errors": false, "showBaseLines": true, "hoursOrMonth": "M" });
-                // ** hoursOrMonth used for swicth between Hours or Month Resource view. By Defualt setting the parameter to M-Month. on change of radio button set H-Hours, and vice versa (HCL detailpage)
                 this.setModel(oModel, "pgUiData");
 
                 this.getModel().metadataLoaded().then(() => {
@@ -45,7 +44,6 @@ sap.ui.define([
                     this.setModel(models.getEcInputModel(this.getModel()), "oModelEstCal");                 /* oModelEstCal = global model for application */
                     this.setModel(models.getEcBaseLineModel(this.getModel()), "oModelSelectedBaseLine");    /* oModelBaseLine = Selected BaseLine model for application */
 
-                    //this.getModel().read("/oModelSelectedBaseLineSet", {
                     this.getModel().read("/zi_hcl_baseline", {
                         success: (oData) => {
                             let oJsModel = new JSONModel();

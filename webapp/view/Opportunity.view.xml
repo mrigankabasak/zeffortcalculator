@@ -16,7 +16,7 @@
 								<Input   value="{oModelEstCal>/CustName}"  required="true"  width="40%"/>
 								
 								<Label  text="Opportunity Name" design="Bold"/>
-								<Input   value="{oModelEstCal>/OppName}" required="true"  width="40%"/>		
+								<Input  value="{oModelEstCal>/OppName}" required="true"  width="40%"/>		
 								<Label  text="Work Package" class="cutomRequired" design="Bold"/>							
 									<VBox justifyContent="SpaceBetween">
 										<RadioButton id="radio_L"  text="Lift and Shift your S/4 System" select=".onWorkpackage($event ,'L')"  />
