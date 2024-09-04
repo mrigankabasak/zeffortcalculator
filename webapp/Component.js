@@ -7,9 +7,10 @@ sap.ui.define([
     "sap/ui/Device",
     "com/zeffortcalculator/model/models",
     "sap/ui/model/json/JSONModel",
+    "sap/m/MessageBox",
     "./controller/ErrorHandler"
 ],
-    function (UIComponent, Device, models, JSONModel, ErrorHandler) {
+    function (UIComponent, Device, models, JSONModel, MessageBox, ErrorHandler) {
         "use strict";
 
         return UIComponent.extend("com.zeffortcalculator.Component", {
@@ -40,10 +41,8 @@ sap.ui.define([
                 this.setModel(oModel, "pgUiData");
 
                 this.getModel().metadataLoaded().then(() => {
-
                     this.setModel(models.getEcInputModel(this.getModel()), "oModelEstCal");                 /* oModelEstCal = global model for application */
                     this.setModel(models.getEcBaseLineModel(this.getModel()), "oModelSelectedBaseLine");    /* oModelBaseLine = Selected BaseLine model for application */
-
                     this.getModel().read("/zi_hcl_baseline", {
                         success: (oData) => {
                             let oJsModel = new JSONModel();
@@ -56,6 +55,17 @@ sap.ui.define([
                     });
                 });
 
+                // Get Loggon User
+
+                // let oUserModel = new JSONModel();
+                // const url = this.getManifestObject()._oBaseUri._parts.path + "user-api/currentUser";
+                // debugger;
+                // oUserModel.loadData(url);
+                // oUserModel.dataLoaded()
+                //     .then(() => {
+                //         MessageBox.success(`Logged in User -  ${oUserModel.getData().displayName}` );
+                //     })
+                //     .catch(() => {});
             },
 
             destroy: function () {

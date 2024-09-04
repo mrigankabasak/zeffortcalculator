@@ -46,21 +46,21 @@ sap.ui.define([], () => {
 				return `Baseline= ${+nBaseLine}, Range= ${nRange}`;
 		},
 
-		convertTwoDecimal: function (amtVal) {
-			if (+amtVal) {
-				return parseFloat(amtVal).toFixed(2);
-			} else {
-				return "";
-			}
-		},
+		// convertTwoDecimal: function (amtVal) {
+		// 	if (+amtVal) {
+		// 		return parseFloat(amtVal).toFixed(2);
+		// 	} else {
+		// 		return "";
+		// 	}
+		// },
 
-		MathRound: function(val){
-			if (val) {
-				return Math.round(val);
-			} else {
-				return "";
-			}
-		},
+		// MathRound: function(val){
+		// 	if (val) {
+		// 		return Math.round(val);
+		// 	} else {
+		// 		return "";
+		// 	}
+		// },
 
 		getFVisible: function (chkVal) {
 			if (chkVal) {

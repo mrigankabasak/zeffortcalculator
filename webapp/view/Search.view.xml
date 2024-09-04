@@ -10,8 +10,7 @@
 	xmlns:smartTable="sap.ui.comp.smarttable"
 	xmlns:mdcValueHelpContent="sap.ui.mdc.valuehelp.content" >
     
-	<Page id="page" title="Search" showNavButton="false" titleAlignment="Center"
-		navButtonPress=".onNavBack">
+	<Page id="page" title="Search" showNavButton="false" titleAlignment="Center">
         <content>
 		<core:Fragment fragmentName="com.zeffortcalculator.view.fragment.HCL" type="XML" />
 			<l:Grid defaultSpan="L12 M7 S12" width="auto">

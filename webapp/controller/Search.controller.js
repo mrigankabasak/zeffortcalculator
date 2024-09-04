@@ -241,10 +241,6 @@ sap.ui.define([
 
 			onValueHelpAfterClose: function () {
 				this._oVHD.destroy();
-			},
-
-			onNavBack: function () {
-				this.getRouter().navTo("Home", {}, false);
 			}
 
 		});

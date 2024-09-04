@@ -36,6 +36,10 @@ server:
             mockdataRootPath: ./webapp/localService/data
           - urlPath: /sap/opu/odata/sap/ZSB_HCL_EFF_CALC_V2_WEB/
             metadataPath: ./webapp/localService/metadata.xml
+            generateMockData: true
+            mockdataRootPath: ./webapp/localService/mockdata
+          - urlPath: /sap/opu/odata/sap/ZSB_HCL_EFF_SAP_WEB_V2/
+            metadataPath: ./webapp/localService/metadata.xml
             mockdataPath: ./webapp/localService/mockdata
             generateMockData: true
         annotations: []

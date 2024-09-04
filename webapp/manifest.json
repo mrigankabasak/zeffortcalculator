@@ -17,7 +17,7 @@
     },
     "dataSources": {
       "mainService": {
-        "uri": "/sap/opu/odata/sap/ZSB_HCL_EFF_CALC_V2_WEB/",
+        "uri": "/sap/opu/odata/sap/ZSB_HCL_EFF_SAP_WEB_V2/",
         "type": "OData",
         "settings": {
           "annotations": [],
@@ -36,6 +36,7 @@
           "semanticObject": "PricingCalculator",
           "action": "Display",
           "title": "{{flpTitle}}",
+          "subTitle": "External",
           "icon": "sap-icon://simulate",
           "signature": {
             "parameters": {},
