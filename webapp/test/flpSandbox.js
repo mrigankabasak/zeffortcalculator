@@ -1,8 +1,10 @@
 sap.ui.define([
 	"sap/base/util/ObjectPath",
-	"sap/ushell/services/Container"
-], function (ObjectPath) {
+	"sap/ushell/services/Container",
+	"sap/ushell/library"
+], function (ObjectPath, Container,library) {
 	"use strict";
+	const { Bootstrap, Container } = library;
 
 	// define ushell config
 	ObjectPath.set(["sap-ushell-config"], {
@@ -86,9 +88,9 @@ sap.ui.define([
 
 			// sandbox is a singleton, so we can start it only once
 			if (!this._oBootstrapFinished) {
-				this._oBootstrapFinished = sap.ushell.bootstrap("local");
+				this._oBootstrapFinished = Bootstrap("local");
 				this._oBootstrapFinished.then(function () {
-					sap.ushell.Container.createRenderer().placeAt("content");
+					Container.createRenderer().placeAt("content");
 				});
 			}
 

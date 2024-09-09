@@ -42,7 +42,7 @@
             return libOrCompKeysStringTmp;
         }
         return new Promise(function (resolve, reject) {
-            $.ajax(url)
+            jQuery.ajax(url)
                 .done(function (manifest) {
                     if (manifest) {
                         if (
