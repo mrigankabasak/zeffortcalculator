@@ -37,7 +37,7 @@ sap.ui.define([
 
                 // set pgUiData model
                 let oModel = new JSONModel();
-                oModel.setData({ "enableTableData": false, "errors": false, "showBaseLines": true, "hoursOrMonth": "M" });
+                oModel.setData({ "loggedInUser": "", "loggedInUserEmail": "", "loggedInUserName": "", "enableTableData": false, "errors": false, "showBaseLines": true, "hoursOrMonth": "M" });
                 this.setModel(oModel, "pgUiData");
 
                 this.getModel().metadataLoaded().then(() => {
@@ -56,16 +56,15 @@ sap.ui.define([
                 });
 
                 // Get Loggon User
-
-                // let oUserModel = new JSONModel();
-                // const url = this.getManifestObject()._oBaseUri._parts.path + "user-api/currentUser";
-                // debugger;
-                // oUserModel.loadData(url);
-                // oUserModel.dataLoaded()
-                //     .then(() => {
-                //         MessageBox.success(`Logged in User -  ${oUserModel.getData().displayName}` );
-                //     })
-                //     .catch(() => {});
+                let oUserModel = new JSONModel();
+                const url = this.getManifestObject()._oBaseUri._parts.path + "user-api/attributes";
+                oUserModel.loadData(url);
+                oUserModel.dataLoaded().then(() => {
+                    this.getModel("pgUiData").setProperty("/loggedInUser", oUserModel.getData().hasOwnProperty("sub") ? oUserModel.getData().sub[0] : "");
+                    this.getModel("pgUiData").setProperty("/loggedInUserEmail", oUserModel.getData().hasOwnProperty("email") ? oUserModel.getData().email : "");
+                    this.getModel("pgUiData").setProperty("/loggedInUserName", oUserModel.getData().firstname + " " + oUserModel.getData().lastname);
+                })
+                    .catch(() => { });
             },
 
             destroy: function () {

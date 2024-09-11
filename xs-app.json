@@ -22,8 +22,8 @@
       "destination": "ui5"
     },
     {
-      "source": "^/user-api/currentUser$",
-      "target": "/currentUser",
+      "source": "^/user-api/attributes$",
+      "target": "/attributes",
       "service": "sap-approuter-userapi"
     },
     {
