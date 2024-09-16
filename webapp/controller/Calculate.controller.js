@@ -182,6 +182,12 @@ sap.ui.define([
 				oCalculateData.then((oResponse) => {
 					console.log(oResponse);
 					BusyIndicator.hide();
+
+					if (JSON.parse(oResponse.headers['sap-message'])?.severity == "error") {
+						MessageBox.information(JSON.parse(oResponse.headers['sap-message']).message);
+						return;
+					}
+
 					let result = oResponse.data;
 					this.getOwnerModel("oModelEstCal").setData(null);
 					//result.NoOfCycles = parseFloat(result.NoOfCycles).toFixed(2);
