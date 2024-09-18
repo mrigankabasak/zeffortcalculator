@@ -7,14 +7,14 @@ sap.ui.define([
     "sap/ui/Device",
     "com/zeffortcalculator/model/models",
     "sap/ui/model/json/JSONModel",
-    "sap/m/MessageBox",
     "./controller/ErrorHandler"
 ],
-    function (UIComponent, Device, models, JSONModel, MessageBox, ErrorHandler) {
+    function (UIComponent, Device, models, JSONModel, ErrorHandler) {
         "use strict";
 
         return UIComponent.extend("com.zeffortcalculator.Component", {
             metadata: {
+                interfaces: ["sap.ui.core.IAsyncContentCreation"],
                 manifest: "json"
             },
 
