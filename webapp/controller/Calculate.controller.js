@@ -4,7 +4,7 @@ sap.ui.define([
 	"../utils/formatter",
 	"sap/m/MessageBox"
 ],
-	function (BaseController, CoreLib, formatter, MessageBox ) {
+	function (BaseController, CoreLib, formatter, MessageBox) {
 		"use strict";
 
 		const { UIComponent, ValueState, BusyIndicator } = CoreLib;
@@ -20,7 +20,7 @@ sap.ui.define([
 			_onObjectFetched: function () {
 				this.getView().loaded().then(() => {
 					this.getOwnerModel("pgUiData").setProperty("/showBaseLines", false);
-					if (this.getOwnerModel("oModelEstCal").getProperty("/SsDbSize")){
+					if (this.getOwnerModel("oModelEstCal").getProperty("/SsDbSize")) {
 						this.getView().byId("SsDbSize").fireChange({ value: this.getOwnerModel("oModelEstCal").getProperty("/SsDbSize") });
 						this.getOwnerModel("oModelEstCal").setProperty("/SaveOrEdit", "");
 					}
@@ -197,6 +197,21 @@ sap.ui.define([
 						MessageBox.error("No Opportunity Id has been created.");
 						return;
 					}
+
+					//  Send Email
+					// let oJsData = {
+					// 	"SentToUser": this.getOwnerModel("pgUiData").getProperty("/loggedInUser"),
+					// 	"UserEmail": this.getOwnerModel("pgUiData").getProperty("/loggedInUserEmail"),
+					// 	"SentFlag": 'x'
+					// };
+					// let oSendEmail = this.callBackEnd("/zi_hcl_email", "POST", [], oJsData , {});
+					// oSendEmail.then((oResponse) => {
+					//     //let result = oResponse.data;
+
+					// }).catch((error) => {
+					//     MessageBox.error(JSON.stringify(error));
+					//     BusyIndicator.hide();
+					// });
 
 					MessageBox.success("Successfully Saved", {
 						actions: [MessageBox.Action.OK],
