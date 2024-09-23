@@ -38,7 +38,7 @@ sap.ui.define([
                     BusyIndicator.show();
                     let oResponse = this.callBackEnd("/zi_hcl_opp_custom", "POST", [], oJsData);
                     oResponse.then((oResponse) => {
-                        let result = oResponse.data.results;
+                        let result = oResponse.data;
                         this.getOwnerModel("oModelEstCal").setProperty("/OpportunityId", result.OpportunityId);
                         this.getOwnerModel("oModelEstCal").setProperty("/Version", result.Version);
                         BusyIndicator.hide();
